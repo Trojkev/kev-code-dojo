@@ -25,6 +25,9 @@ public class Algorithms {
         // testing longestIncreasingSubSequence function
         int[] seq = {2, 4, 3, 6, 8, 5, 9};
         System.out.println("LIS: " + longestIncreasingSubsequence(seq));
+
+        // testing stableTowerPossibleWays function
+        System.out.println("Stable Towers: "+stableTowerPossibleWays(3, 3, 2));
     }
 
     /**
