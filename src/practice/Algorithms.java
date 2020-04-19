@@ -25,6 +25,9 @@ public class Algorithms {
         // testing longestIncreasingSubSequence function
         int[] seq = {2, 4, 3, 6, 8, 5, 9};
         System.out.println("LIS: " + longestIncreasingSubsequence(seq));
+
+        // testing stableTowerPossibleWays function
+        System.out.println("Stable Towers: "+stableTowerPossibleWays(3, 3, 2));
     }
 
     /**
@@ -142,16 +145,45 @@ public class Algorithms {
     private static int stableTowerPossibleWays(int height, int maxSize, int repetitions) {
         int N = 100;
         int[][] dp = new int[N][N];
-        int[][] presum = new int[N][N];
+        int[][] preSum = new int[N][N];
 
         // initialize arrays with zeroes
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 dp[i][j] = 0;
-                presum[i][j] = 0;
+                preSum[i][j] = 0;
             }
         }
 
-        return 0;
+        // initializing the 0th row to zero
+        for (int i = 1; i < height + 1; i++) {
+            dp[0][i] = 0;
+            preSum[0][i] = 1;
+        }
+
+        // initializing the 0th column to 1
+        for (int i = 0; i < maxSize+1; i++) {
+            preSum[i][0] = dp[i][0] = 1;
+        }
+
+        // here we solve the problem dynamically
+
+        // for each row from 1 to maxSize
+        for (int i=1; i<maxSize+1; i++){
+            // for each column from 1 to height
+            for (int j = 1; j < height+1; j++) {
+                // initializing dp[i][j] to preSum[i-1][j]
+                dp[i][j] = preSum[i-1][j];
+                if (j>repetitions)
+                    dp[i][j] -= preSum[i-1][j-repetitions-1];
+            }
+
+            // calculating the preSum for every i, 1<=i<=height;
+            for (int j = 1; j < height+1; j++) {
+                preSum[i][j] = dp[i][j] + preSum[i][j-1];
+            }
+        }
+
+        return dp[maxSize][height];
     }
 }
