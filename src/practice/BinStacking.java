@@ -1,6 +1,9 @@
 package practice;
 
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class BinStacking {
     public static void main(String[] args) {
         int[] items = {2, 5, 4, 7, 1, 3, 8};
@@ -9,6 +12,9 @@ public class BinStacking {
         System.out.println("First Fit Bins Used: "+firstFit (items, 10));
 
         System.out.println("Best Fit Bins Used: "+bestFit (items, 10));
+
+        Integer[] weights = {2, 5, 4, 7, 1, 3, 8};
+        System.out.println("First Fit Decreasing Bins Used: "+firstFitDecreasing (weights, 10));
     }
 
     /**
@@ -86,4 +92,21 @@ public class BinStacking {
         return bins;
     }
 
+    /**
+     * This algorithm sorts the input array and then implements the First Fit algorithm
+     * It is always guaranteed to use the minimum number of bins possible
+     * @param weights the wights to be packed in bins
+     * @param capacity the maximum capacity for each bin
+     * @return the minimum bins used
+     */
+    private static int firstFitDecreasing(Integer[] weights, int capacity){
+        Arrays.sort(weights, Collections.reverseOrder());
+
+        // convert Integer[] to int[]
+        int[] items = new int[weights.length];
+        for (int i = 0; i < weights.length; i++) {
+            items[i] = weights[i];
+        }
+        return firstFit(items, capacity);
+    }
 }
