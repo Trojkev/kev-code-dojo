@@ -8,6 +8,7 @@ public class BinStacking {
 
         System.out.println("First Fit Bins Used: "+firstFit (items, 10));
 
+        System.out.println("Best Fit Bins Used: "+bestFit (items, 10));
     }
 
     /**
@@ -56,4 +57,33 @@ public class BinStacking {
         }
         return bins;
     }
+
+    public static int bestFit(int[] weights, int capacity){
+        int bins = 0;
+        int[] bin_rem = new int[weights.length];
+
+        // place each weight at a time
+        for (int weight: weights) {
+            // check the best bin that can accommodate the current weight
+            int i;
+
+            // initialize minimum space left in bin and index of best bin
+            int min = capacity+1, best = 0;
+            for (i = 0; i < bins; i++) {
+                if (weight <= bin_rem[i] && bin_rem[i]-weight < min){
+                    min = bin_rem[i] -weight;
+                    best = i;
+                }
+            }
+
+            // if no bin could accommodate the weight, we use a new one
+            if (min == capacity+1){
+                bin_rem[bins] = capacity - weight;
+                bins++;
+            } else bin_rem[best] -= weight; // assign the weight to the best been so far
+        }
+
+        return bins;
+    }
+
 }
