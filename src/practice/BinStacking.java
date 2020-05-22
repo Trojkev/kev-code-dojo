@@ -7,14 +7,15 @@ import java.util.Collections;
 public class BinStacking {
     public static void main(String[] args) {
         int[] items = {2, 5, 4, 7, 1, 3, 8};
-        System.out.println("Next Fit Bins Used: "+nextFit (items, 10));
+        int capacity = 10;
+        System.out.println("Next Fit Bins Used: "+nextFit (items, capacity));
 
-        System.out.println("First Fit Bins Used: "+firstFit (items, 10));
+        System.out.println("First Fit Bins Used: "+firstFit (items, capacity));
 
-        System.out.println("Best Fit Bins Used: "+bestFit (items, 10));
+        System.out.println("Best Fit Bins Used: "+bestFit (items, capacity));
 
         Integer[] weights = {2, 5, 4, 7, 1, 3, 8};
-        System.out.println("First Fit Decreasing Bins Used: "+firstFitDecreasing (weights, 10));
+        System.out.println("First Fit Decreasing Bins Used: "+firstFitDecreasing (weights, capacity));
     }
 
     /**
@@ -64,7 +65,7 @@ public class BinStacking {
         return bins;
     }
 
-    public static int bestFit(int[] weights, int capacity){
+    private static int bestFit(int[] weights, int capacity){
         int bins = 0;
         int[] bin_rem = new int[weights.length];
 

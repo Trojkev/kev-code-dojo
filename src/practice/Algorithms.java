@@ -27,7 +27,10 @@ public class Algorithms {
         System.out.println("LIS: " + longestIncreasingSubsequence(seq));
 
         // testing stableTowerPossibleWays function
-        System.out.println("Stable Towers: "+stableTowerPossibleWays(3, 3, 2));
+        int height = 3;
+        int maxSize = 3;
+        int cycles = 2;
+        System.out.println("Stable Towers: "+stableTowerPossibleWays(height, maxSize, cycles));
     }
 
     /**
