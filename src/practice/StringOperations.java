@@ -2,10 +2,15 @@ package practice;
 
 public class StringOperations {
     public static void main(String[] args) {
+        // test compression function
         String input = "aaabbccccddeee";
-
         String output = compressString(input);
-        System.out.println(input +" => "+ output);
+        System.out.println(input +" : Compressed => "+ output);
+
+        // test string reversal function
+        input = "Hello world";
+        output = reverseString(input);
+        System.out.println(input +" : Reversed => "+ output);
     }
 
     /**
@@ -41,6 +46,23 @@ public class StringOperations {
 
             return compressed.toString();
         }
+        return original;
+    }
+
+    /**
+     * This method takes in a string and reverses it, then returns the reversed string
+     * @param original the string to be reversed
+     * @return the reversed string
+     */
+    private static String reverseString(String original){
+        if (original.length() > 1){
+            StringBuilder reversed = new StringBuilder();
+            for (char c: original.toCharArray()) {
+                reversed.insert(0, c);
+            }
+            return reversed.toString();
+        }
+
         return original;
     }
 }
