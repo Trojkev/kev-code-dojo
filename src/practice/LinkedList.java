@@ -66,6 +66,33 @@ class LinkedList {
         }
     }
 
+    void deleteNode(int val){
+        if (isEmpty()) // there are no available nodes
+            throw new NoSuchElementException();
+
+        if (head.value == val) { // remove head,.. if head is the sam as tail, remove both
+            if (head == tail)
+                head = tail = null;
+            else
+                head = head.next;
+        } else { // iterate the linked list and remove the first node that matches the value
+            Node node = head;
+            while (node.next != null){
+
+                if (node.next.value == val){
+                    if (node.next == tail){
+                        node.next = null;
+                        tail = node;
+                        break;
+                    }
+                    node.next = node.next.next;
+                }
+                else
+                    node = node.next;
+            }
+        }
+    }
+
     void print() {
         if (!isEmpty()) { // multiple nodes available, let's iterate
             var current = head;
@@ -77,7 +104,7 @@ class LinkedList {
         }
     }
 
-    int indexOf(int item) {
+    private int indexOf(int item) {
         var current = head;
         int index = 0;
 
