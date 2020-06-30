@@ -1,45 +1,46 @@
 package practice;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
+import java.util.*;
 
 public class Algorithms {
     public static void main(String[] args) {
-        // testing the parentheses balancer function
-        String braces = "{([]()){}}";
-        System.out.println(isBalanced(braces));
+//        // testing the parentheses balancer function
+//        String braces = "{([]()){}}";
+//        System.out.println(isBalanced(braces));
+//
+//        // testing the fibonacci series nth finder
+//        System.out.println(nthFibonacci(5));
+//
+//        // testing the bestCandidate function
+//        int size = 10;
+//        int[] cands = new int[size];
+//        for (int i = 0; i < size; i++)
+//            cands[i] = new Random().nextInt(10);
+//        System.out.println("Candidates: " + Arrays.toString(cands));
+//        System.out.println("Best: " + bestCandidate(cands, cands.length));
+//
+//        // testing longestIncreasingSubSequence function
+//        int[] seq = {2, 4, 3, 6, 8, 5, 9};
+//        System.out.println("LIS: " + longestIncreasingSubsequence(seq));
+//
+//        // testing stableTowerPossibleWays function
+//        int height = 3;
+//        int maxSize = 3;
+//        int cycles = 2;
+//        System.out.println("Stable Towers: "+stableTowerPossibleWays(height, maxSize, cycles));
+//
+//        // testing maxDoubleNumber
+//        int num = 2145367826;
+//        System.out.println("maxDoubleNumber: "+ maxDoubleNumber(num));
+//
+//        // testing sandWitchDistribution
+//        int[] input = {5,3,1,2,1};
+////        int[] input = {4,5,2,3,1,0};
+//        System.out.println(sandWitchDistribution(input));
 
-        // testing the fibonacci series nth finder
-        System.out.println(nthFibonacci(5));
-
-        // testing the bestCandidate function
-        int size = 10;
-        int[] cands = new int[size];
-        for (int i = 0; i < size; i++)
-            cands[i] = new Random().nextInt(10);
-        System.out.println("Candidates: " + Arrays.toString(cands));
-        System.out.println("Best: " + bestCandidate(cands, cands.length));
-
-        // testing longestIncreasingSubSequence function
-        int[] seq = {2, 4, 3, 6, 8, 5, 9};
-        System.out.println("LIS: " + longestIncreasingSubsequence(seq));
-
-        // testing stableTowerPossibleWays function
-        int height = 3;
-        int maxSize = 3;
-        int cycles = 2;
-        System.out.println("Stable Towers: "+stableTowerPossibleWays(height, maxSize, cycles));
-
-        // testing maxDoubleNumber
-        int num = 2145367826;
-        System.out.println("maxDoubleNumber: "+ maxDoubleNumber(num));
-
-        // testing sandWitchDistribution
-        int[] input = {5,3,1,2,1};
-//        int[] input = {4,5,2,3,1,0};
-        System.out.println(sandWitchDistribution(input));
+        // testing movingMedian
+        int[] inputData = {5,2,4,6};
+        System.out.println("Medians: "+ Arrays.toString(movingMedian(inputData)));
     }
 
     /**
@@ -246,5 +247,58 @@ public class Algorithms {
         }
 
         return max - min;
+    }
+
+    private static double[] movingMedian(int[] array){
+        // create a max heap to store the lower numbers
+        PriorityQueue<Integer> lowerHalf = new PriorityQueue<>((a, b) -> -1 * a.compareTo(b));
+
+        // create a min heap to store the upper numbers
+        PriorityQueue<Integer> upperHalf = new PriorityQueue<>();
+
+        double[] medians = new double[array.length];
+        for (int i = 0; i < array.length; i++) {
+            // let's add the number into the heap
+            addToHeap(array[i], lowerHalf, upperHalf);
+            // Balance the heap
+            reBalanceHeap(lowerHalf, upperHalf);
+            // get median from that point
+            medians[i] = getMedian(lowerHalf, upperHalf);
+        }
+
+        return medians;
+    }
+
+    private static void addToHeap(int number, PriorityQueue<Integer> lower, PriorityQueue<Integer> upper){
+        if (lower.isEmpty() || number < lower.peek())
+            lower.add(number);
+        else
+            upper.add(number);
+    }
+
+    private static void reBalanceHeap(PriorityQueue<Integer> lower, PriorityQueue<Integer> upper){
+        // determine the heap with more elements as bigger and the other as smaller
+        PriorityQueue<Integer> biggerHeap = lower.size() > upper.size() ? lower : upper;
+        PriorityQueue<Integer> smallerHeap = upper.size() > lower.size() ? lower : upper;
+
+        if (biggerHeap.size() - smallerHeap.size() > 1)
+            smallerHeap.add(biggerHeap.poll());
+    }
+
+    private static double getMedian(PriorityQueue<Integer> lower, PriorityQueue<Integer> upper){
+        double median = -1;
+        // get the median of the heaps
+        PriorityQueue<Integer> biggerHeap = lower.size() > upper.size() ? lower : upper;
+        PriorityQueue<Integer> smallerHeap = upper.size() > lower.size() ? lower : upper;
+
+        // if both heaps are the same size, we return the average of max in lower and min in upper
+        if (smallerHeap.peek() != null || biggerHeap.peek() != null) {
+            if (biggerHeap.size() == smallerHeap.size())
+                median = (double)(biggerHeap.peek() + smallerHeap.peek())/2;
+            else // return the top of the bigger heap
+                median = biggerHeap.peek();
+        }
+
+        return median;
     }
 }
