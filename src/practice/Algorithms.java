@@ -7,30 +7,39 @@ import java.util.Stack;
 
 public class Algorithms {
     public static void main(String[] args) {
-        // testing the parentheses balancer function
-        String braces = "{([]()){}}";
-        System.out.println(isBalanced(braces));
+//        // testing the parentheses balancer function
+//        String braces = "{([]()){}}";
+//        System.out.println(isBalanced(braces));
+//
+//        // testing the fibonacci series nth finder
+//        System.out.println(nthFibonacci(5));
+//
+//        // testing the bestCandidate function
+//        int size = 10;
+//        int[] cands = new int[size];
+//        for (int i = 0; i < size; i++)
+//            cands[i] = new Random().nextInt(10);
+//        System.out.println("Candidates: " + Arrays.toString(cands));
+//        System.out.println("Best: " + bestCandidate(cands, cands.length));
+//
+//        // testing longestIncreasingSubSequence function
+//        int[] seq = {2, 4, 3, 6, 8, 5, 9};
+//        System.out.println("LIS: " + longestIncreasingSubsequence(seq));
+//
+//        // testing stableTowerPossibleWays function
+//        int height = 3;
+//        int maxSize = 3;
+//        int cycles = 2;
+//        System.out.println("Stable Towers: "+stableTowerPossibleWays(height, maxSize, cycles));
+//
+//        // testing maxDoubleNumber
+//        int num = 2145367826;
+//        System.out.println("maxDoubleNumber: "+ maxDoubleNumber(num));
 
-        // testing the fibonacci series nth finder
-        System.out.println(nthFibonacci(5));
-
-        // testing the bestCandidate function
-        int size = 10;
-        int[] cands = new int[size];
-        for (int i = 0; i < size; i++)
-            cands[i] = new Random().nextInt(10);
-        System.out.println("Candidates: " + Arrays.toString(cands));
-        System.out.println("Best: " + bestCandidate(cands, cands.length));
-
-        // testing longestIncreasingSubSequence function
-        int[] seq = {2, 4, 3, 6, 8, 5, 9};
-        System.out.println("LIS: " + longestIncreasingSubsequence(seq));
-
-        // testing stableTowerPossibleWays function
-        int height = 3;
-        int maxSize = 3;
-        int cycles = 2;
-        System.out.println("Stable Towers: "+stableTowerPossibleWays(height, maxSize, cycles));
+        // testing sandWitchDistribution
+        int[] input = {5,3,1,2,1};
+//        int[] input = {4,5,2,3,1,0};
+        System.out.println(sandWitchDistribution(input));
     }
 
     /**
@@ -188,5 +197,54 @@ public class Algorithms {
         }
 
         return dp[maxSize][height];
+    }
+
+    private static int maxDoubleNumber(int num){
+        String input = Integer.toString(num);
+        if (input.length() < 3)
+            return num;
+        int maxNum = -1;
+        for (int i = 1; i < input.length(); i++) {
+            maxNum = Math.max(maxNum, Integer.parseInt(input.substring(i-1, i+1)));
+        }
+        return maxNum;
+    }
+
+    private static int sandWitchDistribution(int[] array){
+        int sandWitches = array[0];
+
+        for (int i = 2; i < array.length; i++) {
+            if (sandWitches > 0){ // we must have sand witches for us to distribute
+                int diff;
+                if (array[i] > array[i-1]){
+                    diff = array[i] - array[i-1];
+                    if (sandWitches >= diff){
+                        array[i] = array[i-1];
+                        sandWitches -= diff;
+                    } else {
+                        array[i] = array[i] - sandWitches;
+                        sandWitches = 0;
+                    }
+                } else if (array[i-1] > array[i]){
+                    diff = array[i-1] - array[i];
+                    if (sandWitches >= diff){
+                        array[i-1] = array[i];
+                        sandWitches -= diff;
+                    } else {
+                        array[i-1] = array[i-1] - sandWitches;
+                        sandWitches = 0;
+                    }
+                }
+            }
+        }
+
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < array.length; i++) {
+            max = Math.max(array[i], max);
+            min = Math.min(array[i], max);
+        }
+
+        return max - min;
     }
 }
