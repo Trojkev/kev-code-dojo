@@ -39,8 +39,16 @@ public class Algorithms {
 //        System.out.println(sandWitchDistribution(input));
 
         // testing movingMedian
-        int[] inputData = {5,2,4,6};
-        System.out.println("Medians: "+ Arrays.toString(movingMedian(inputData)));
+//        int[] inputData = {5,2,4,6};
+//        System.out.println("Medians: "+ Arrays.toString(movingMedian(inputData)));
+        Stack<Integer> stack = new Stack<>();
+        stack.push(12);
+        stack.push(20);
+
+        int result = stack.pop() - stack.pop();
+        stack.push(result);
+        System.out.println(result);
+        System.out.println(stack.size());
     }
 
     /**
