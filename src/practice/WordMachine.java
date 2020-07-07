@@ -9,6 +9,7 @@ public class WordMachine {
         String input = "5 6 + -";
         System.out.println(solution(input));
     }
+
     private static int solution(String S) {
         Stack<Integer> stack = new Stack<>();
         String[] input = S.split(" ");
@@ -26,16 +27,20 @@ public class WordMachine {
                         removeItem(stack);
                         break;
                     case "+":
-                        val = doAddition(stack);
-                        if (val == -1)
-                            return -1;
-                        stack.push(val);
+                        if (stack.size() > 1){
+                            val = doAddition(stack);
+                            if (val == -1)
+                                return -1;
+                            stack.push(val);
+                        }
                         break;
                     case "-":
-                        val = doSubtraction(stack);
-                        if (val == -1)
-                            return -1;
-                        stack.push(val);
+                        if (stack.size() > 1){
+                            val = doSubtraction(stack);
+                            if (val == -1)
+                                return -1;
+                            stack.push(val);
+                        }
                         break;
                     default:
                         break;
@@ -44,37 +49,23 @@ public class WordMachine {
             System.out.println(stack);
         }
 
-        if(stack.isEmpty()){
-            returnError();
-        }
-        return stack.peek();
+        return stack.isEmpty() ? -1 : stack.peek();
     }
 
     private static boolean isValidInteger(String num){
         try{
-            int n = Integer.parseInt(num);
+            Integer.parseInt(num);
             return true;
         } catch(NumberFormatException e){
             return false;
         }
     }
 
-    private static int returnError(){
-        return -1;
-    }
-
-    private static Stack<Integer> duplicateItem(Stack<Integer> stack){
-        if(stack.isEmpty()){
-            returnError();
-        }
+    private static void duplicateItem(Stack<Integer> stack){
         stack.push(stack.peek());
-        return stack;
     }
 
     private static void removeItem(Stack<Integer> stack){
-        if(stack.isEmpty()){
-            returnError();
-        }
         stack.pop();
     }
 
