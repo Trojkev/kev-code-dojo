@@ -13,15 +13,15 @@ public class Algorithms {
 
         // testing the bestCandidate function
         int size = 10;
-        int[] cands = new int[size];
+        int[] candidates = new int[size];
         for (int i = 0; i < size; i++)
-            cands[i] = new Random().nextInt(10);
-        System.out.println("Candidates: " + Arrays.toString(cands));
-        System.out.println("Best: " + bestCandidate(cands, cands.length));
+            candidates[i] = new Random().nextInt(10);
+        System.out.println("Candidates: " + Arrays.toString(candidates));
+        System.out.println("Best: " + bestCandidate(candidates, candidates.length));
 
         // testing longestIncreasingSubSequence function
         int[] seq = {2, 4, 3, 6, 8, 5, 9};
-        System.out.println("LIS: " + longestIncreasingSubsequence(seq));
+        System.out.println("LIS: " + longestIncreasingSubSequence(seq));
 
         // testing stableTowerPossibleWays function
         int height = 3;
@@ -120,7 +120,7 @@ public class Algorithms {
      * @param sequence the array to be processed
      * @return integer denoting the max increasing sub-sequence
      */
-    private static int longestIncreasingSubsequence(int[] sequence) {
+    private static int longestIncreasingSubSequence(int[] sequence) {
         if (sequence.length == 0)
             return 0;
 
