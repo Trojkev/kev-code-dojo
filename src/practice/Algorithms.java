@@ -41,6 +41,11 @@ public class Algorithms {
         //  testing movingMedian
         int[] inputData = {5,2,4,6};
         System.out.println("Medians: "+ Arrays.toString(movingMedian(inputData)));
+
+        // testing arrayAddition
+        int[] addData = {4,6,23,10,3};
+//        int[] addData = {5,7,16,1,2};
+        System.out.println("Array Addition valid: "+ arrayAddition(addData));
     }
 
     /**
@@ -300,5 +305,29 @@ public class Algorithms {
         }
 
         return median;
+    }
+
+    /**
+     * This program takes in an array, finds the largest element and then sums all the other elements to see if their
+     * sum equals the largest element
+     * @param array the array to be processed
+     * @return a boolean indicating whether the summation of all the elements in the array excluding the largest one
+     * equals the largest element
+     */
+    private static boolean arrayAddition(int[] array){
+        // first we sort the array to ensure the largest element is at the end
+        Arrays.sort(array);
+        // next we create a new array to hold all the summations up to that point
+        // and initialize it with the elements in the original array
+        int[] sums = new int[array.length];
+        System.arraycopy(array, 0, sums, 0, sums.length);
+
+        // now we iterate over the array calculating the sum at each index except the last, dynamically
+        for (int i = 1; i < sums.length-1; i++) {
+            sums[i] = sums[i] + sums[i-1];
+        }
+
+        int len = sums.length;
+        return sums[len-2] == sums[len-1];
     }
 }
