@@ -52,6 +52,11 @@ public class Algorithms {
 //        String text = "xyz";
         int key = 2;
         System.out.println("Original: "+ text + " Encrypted: " + caesarEncryption(text, key));
+
+        // testing twoSum
+        int[] array = {2,15,3,11,5,-1,4};
+        int target = 10;
+        System.out.println("twoSum result: "+Arrays.toString(twoSum(array, target)));
     }
 
     /**
@@ -354,5 +359,18 @@ public class Algorithms {
             return (char) nextChar;
         nextChar = 96 + (nextChar - 122);
         return (char) nextChar;
+    }
+
+    private static int[] twoSum(int[] array, int targetSum){
+        Map<Integer, Boolean> nums = new HashMap<>();
+        for (int num: array) {
+            int possibleMatch = targetSum - num;
+            if (nums.containsKey(possibleMatch)){
+                return new int[] {possibleMatch, num};
+            }else
+                nums.put(num, true);
+        }
+
+        return new int[0];
     }
 }
