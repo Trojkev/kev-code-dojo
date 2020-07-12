@@ -46,6 +46,12 @@ public class Algorithms {
         int[] addData = {4,6,23,10,3};
 //        int[] addData = {5,7,16,1,2};
         System.out.println("Array Addition valid: "+ arrayAddition(addData));
+
+        // testing caesarEncryption
+        String text = "abc";
+//        String text = "xyz";
+        int key = 2;
+        System.out.println("Original: "+ text + " Encrypted: " + caesarEncryption(text, key));
     }
 
     /**
@@ -329,5 +335,24 @@ public class Algorithms {
 
         int len = sums.length;
         return sums[len-2] == sums[len-1];
+    }
+
+    private static String caesarEncryption(String text, int key){
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            result.append(getNextCharacter(text.charAt(i), key));
+        }
+        return result.toString();
+    }
+
+    private static char getNextCharacter(char character, int key){
+        if (key > 26)
+            key -= 26;
+
+        int nextChar = (int) character + key;
+        if (nextChar <= 122)
+            return (char) nextChar;
+        nextChar = 96 + (nextChar - 122);
+        return (char) nextChar;
     }
 }
