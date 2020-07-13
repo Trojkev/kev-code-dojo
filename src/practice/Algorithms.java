@@ -57,6 +57,10 @@ public class Algorithms {
         int[] array = {2,15,3,11,5,-1,4};
         int target = 10;
         System.out.println("twoSum result: "+Arrays.toString(twoSum(array, target)));
+
+        // testing questionMarks
+        String qText = "arrb6???4xxbl5???eee5";
+        System.out.println("Question marks valid: "+ questionMarks(qText));
     }
 
     /**
@@ -372,5 +376,31 @@ public class Algorithms {
         }
 
         return new int[0];
+    }
+
+    private static boolean questionMarks(String text){
+        int qMarks = 0;
+        boolean count = true;
+        int prev = -1;
+
+        for (int i = 0; i < text.length(); i++) {
+            if (Character.isDigit(text.charAt(i))){
+                int current = Integer.parseInt(text.substring(i, i+1));
+                if (prev != -1) {
+                    if (qMarks != 3 && prev+current != 10 && count)
+                        return false;
+                    else {
+                        qMarks = 0;
+                        count = false;
+                    }
+                }
+                prev = current;
+            } else if (text.charAt(i) == '?'){
+                count = true;
+                qMarks++;
+            }
+        }
+
+        return true;
     }
 }
