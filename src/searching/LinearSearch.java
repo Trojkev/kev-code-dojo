@@ -13,6 +13,9 @@ public class LinearSearch {
     /**
      * Search through an array for the first occurrence of the provided item.
      * If found, return it's index. else, return -1
+     * Time complexity: O(n) -> at worst case we might check all the elements of the array
+     * Space complexity: O(1) -> we are not creating any variables or arrays
+     *
      * @param input the input array to be searched
      * @param item the item being searched in the array
      * @return the index of the item in the array if present, else -1
