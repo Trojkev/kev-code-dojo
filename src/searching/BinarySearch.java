@@ -19,6 +19,8 @@ public class BinarySearch {
      * If element we are searching is less than item at the center, we check on the lower half, else the upper
      * if the element is not found, we return -1
      *
+     * Assumption: the input array is ordered
+     *
      * Time complexity: O(logn) -> the input halves with every check
      * Space complexity: O(1) -> we need constant memory to store the start, mid and end variables
      * @param input the input array we are searching from
