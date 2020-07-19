@@ -19,6 +19,9 @@ public class SelectionSort {
      * @return a sorted version of the input array
      */
     private static int[] sortItems(int[] array){
+        if (array == null) {
+            return new int[]{};
+        } else if (array.length < 2) return array;
         for (int i = 0; i < array.length; i++) {
             int minIndex = i;
             for (int j = i+1; j < array.length; j++) {
