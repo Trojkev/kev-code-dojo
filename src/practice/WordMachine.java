@@ -5,12 +5,13 @@ import java.util.Stack;
 
 public class WordMachine {
     public static void main(String[] args) {
-//        String input = "13 DUP 4 POP 5 DUP + DUP + -";
-        String input = "5 6 + -";
+        String input = "13 DUP 4 POP 5 DUP + DUP + -";
+//        String input = "5 6 + -";
         System.out.println(solution(input));
     }
 
     private static int solution(String S) {
+        // time O(n) | space O(n)
         Stack<Integer> stack = new Stack<>();
         String[] input = S.split(" ");
 
@@ -32,7 +33,7 @@ public class WordMachine {
                             if (val == -1)
                                 return -1;
                             stack.push(val);
-                        }
+                        } else return -1;
                         break;
                     case "-":
                         if (stack.size() > 1){
@@ -40,7 +41,8 @@ public class WordMachine {
                             if (val == -1)
                                 return -1;
                             stack.push(val);
-                        }
+                        } else
+                            return -1;
                         break;
                     default:
                         break;

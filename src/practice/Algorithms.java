@@ -379,14 +379,15 @@ public class Algorithms {
     }
 
     private static boolean questionMarks(String text){
-        int qMarks = 0;
+      // time O(n) | space O(1)
+        int qMarks = 0; // number of question marks encountered
         boolean count = true;
         int prev = -1;
 
         for (int i = 0; i < text.length(); i++) {
             if (Character.isDigit(text.charAt(i))){
                 int current = Integer.parseInt(text.substring(i, i+1));
-                if (prev != -1) {
+                if (prev != -1) { // not the first integer
                     if (qMarks != 3 && prev+current != 10 && count)
                         return false;
                     else {
