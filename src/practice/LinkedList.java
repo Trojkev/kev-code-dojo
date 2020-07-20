@@ -123,4 +123,16 @@ class LinkedList {
     private boolean isEmpty() {
         return head == null;
     }
+
+    private int length() {
+        int len = 0;
+
+        Node current = head;
+        while (current != null){
+            len++;
+            current = current.next;
+        }
+
+        return len;
+    }
 }
