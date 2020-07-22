@@ -12,10 +12,10 @@ public class LinkedList {
         list.addLast(13);
         list.addLast(17);
 
-        System.out.println(list.toString());
+        System.out.println(list);
         int item = 15;
         list.insertInSortedList(item);
-        System.out.println(list.toString());
+        System.out.println(list);
     }
 
     private Node head;
