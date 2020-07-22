@@ -5,25 +5,25 @@ import java.util.Stack;
 public class BstValidator {
     public static void main(String[] args) {
         var tree = new BstValidator();
-//        tree.root = new Node(4);
-//        tree.root.left = new Node(2);
-//        tree.root.left.left = new Node(1);
-//        tree.root.left.right = new Node(3);
-//        tree.root.right = new Node(6);
-//        tree.root.right.left = new Node(5);
-//        tree.root.right.right = new Node(7);
+//        tree.root = new BNode(4);
+//        tree.root.left = new BNode(2);
+//        tree.root.left.left = new BNode(1);
+//        tree.root.left.right = new BNode(3);
+//        tree.root.right = new BNode(6);
+//        tree.root.right.left = new BNode(5);
+//        tree.root.right.right = new BNode(7);
 
-        tree.root = new Node(10);
-        tree.root.left = new Node(5);
-        tree.root.right = new Node(15);
-        tree.root.left.right = new Node(10);
+        tree.root = new BNode(10);
+        tree.root.left = new BNode(5);
+        tree.root.right = new BNode(15);
+        tree.root.left.right = new BNode(10);
 
         System.out.println(tree.isBst());
         System.out.println(tree.validateBST(tree.root));
     }
 
     // the root node of the tree
-    private Node root;
+    private BNode root;
 
     /**
      * Takes in a tree, and returns true if the tree is a BST
@@ -34,7 +34,7 @@ public class BstValidator {
      * @param max  the minimum value being compared
      * @return a boolean indicating whether the tree is a BST
      */
-    private boolean isBstUtil(Node node, int min, int max) {
+    private boolean isBstUtil(BNode node, int min, int max) {
         /* an empty tree is always a BST, hence we return true*/
         if (node == null) {
             System.out.println("Null found");
@@ -66,9 +66,9 @@ public class BstValidator {
      * @param root the root node of the tree being validated
      * @return a boolean indicating whether it's a valid BST
      */
-    private boolean validateBST(Node root) {
+    private boolean validateBST(BNode root) {
         // let's create a stack to hold all the nodes from the root for processing
-        Stack<Node> nodes = new Stack<>();
+        Stack<BNode> nodes = new Stack<>();
         // here we store the minimum value and will always be the min
         int left_val = Integer.MIN_VALUE;
 
@@ -93,11 +93,11 @@ public class BstValidator {
     }
 }
 
-class Node {
+class BNode {
     int data;
-    Node left, right;
+    BNode left, right;
 
-    Node(int item) {
+    BNode(int item) {
         this.data = item;
         left = right = null;
     }

@@ -2,20 +2,26 @@ package practice;
 
 import java.util.NoSuchElementException;
 
-class LinkedList {
-    private class Node {
-        int value;
-        private Node next;
+public class LinkedList {
+    public static void main(String[] args) {
+        var list = new LinkedList();
 
-        Node(int value) {
-            this.value = value;
-        }
+        list.addFirst(5);
+        list.addLast(8);
+        list.addLast(12);
+        list.addLast(13);
+        list.addLast(17);
+
+        System.out.println(list.toString());
+        int item = 15;
+        list.insertInSortedList(item);
+        System.out.println(list.toString());
     }
 
     private Node head;
     private Node tail;
 
-    void addFirst(int item) {
+    private void addFirst(int item) {
         if (head == null)
             head = tail = new Node(item);
         else {
@@ -37,7 +43,7 @@ class LinkedList {
         head = second;
     }
 
-    void addLast(int item) {
+    private void addLast(int item) {
         if (head == null) // List contains no nodes
             head = tail = new Node(item);
         else { // we create a new node, set tail to point to it, and set it as tail
@@ -93,15 +99,26 @@ class LinkedList {
         }
     }
 
-    void print() {
+    @Override
+    public String toString() {
+        String result =  "{}";
         if (!isEmpty()) { // multiple nodes available, let's iterate
+            StringBuilder builder = new StringBuilder();
+
+            builder.append("{");
+            String joiner = "";
             var current = head;
-            do {
-                System.out.println(current.value);
+
+            while (current != null){
+                builder.append(joiner);
+                builder.append(current.value);
+                joiner = ", ";
                 current = current.next;
             }
-            while (current != null);
+            builder.append("}");
+            result = builder.toString();
         }
+        return result;
     }
 
     private int indexOf(int item) {
@@ -134,5 +151,41 @@ class LinkedList {
         }
 
         return len;
+    }
+
+    private void insertInSortedList(int item){
+        if (head == null)
+            addFirst(item);
+        else if (head == tail) {
+            if (item >= head.value)
+                addLast(item);
+            else
+                addFirst(item);
+        } else {
+            var current = head;
+
+            while (current != null){
+                if (current == tail) {
+                    addLast(item);
+                    return;
+                }
+                else if (current.next.value >= item){
+                    var newNode = new Node(item);
+                    newNode.next = current.next;
+                    current.next = newNode;
+                    return;
+                }
+                current = current.next;
+            }
+        }
+    }
+}
+
+class Node {
+    int value;
+    Node next;
+
+    Node(int value) {
+        this.value = value;
     }
 }
