@@ -1,9 +1,9 @@
 package trees;
 
 class TreeNode {
-    int data;
-    TreeNode left;
-    TreeNode right;
+    private int data;
+    private TreeNode left;
+    private TreeNode right;
 
     TreeNode(int value){
         data = value;
