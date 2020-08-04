@@ -1,9 +1,9 @@
 package trees;
 
 class TreeNode {
-    private int data;
-    private TreeNode left;
-    private TreeNode right;
+    int data;
+    TreeNode left;
+    TreeNode right;
 
     TreeNode(int value){
         data = value;
@@ -33,5 +33,9 @@ class TreeNode {
             else
                 this.left.insert(value);
         }
+    }
+
+    void delete(int value){
+
     }
 }
