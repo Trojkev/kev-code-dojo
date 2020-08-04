@@ -73,4 +73,32 @@ public class BinarySearchTree {
 //            }
 //        }
     }
+
+    private int min(){
+        int smallest = Integer.MIN_VALUE;
+        TreeNode current = root;
+
+        while (current != null){
+            if (!current.isDeleted())
+                smallest = current.data;
+
+            current = current.left;
+        }
+
+        return smallest;
+    }
+
+    private int max(){
+        int largest = Integer.MAX_VALUE;
+        TreeNode current = root;
+
+        while (current != null){
+            if (!current.isDeleted())
+                largest = current.data;
+
+            current = current.right;
+        }
+
+        return largest;
+    }
 }

@@ -1,9 +1,9 @@
 package trees;
 
 class TreeNode {
-    private int data;
-    private TreeNode left;
-    private TreeNode right;
+    int data;
+    TreeNode left;
+    TreeNode right;
     private boolean isDeleted;
 
     TreeNode(int value){
