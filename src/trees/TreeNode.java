@@ -1,9 +1,10 @@
 package trees;
 
 class TreeNode {
-    int data;
-    TreeNode left;
-    TreeNode right;
+    private int data;
+    private TreeNode left;
+    private TreeNode right;
+    private boolean isDeleted;
 
     TreeNode(int value){
         data = value;
@@ -11,7 +12,7 @@ class TreeNode {
     }
 
     TreeNode find(int value){
-        if (data == value)
+        if (data == value && !isDeleted())
             return this;
         if (value < data && left != null)
             return left.find(value);
@@ -35,7 +36,11 @@ class TreeNode {
         }
     }
 
-    void delete(int value){
+    void delete(){
+        this.isDeleted = true;
+    }
 
+    boolean isDeleted(){
+        return this.isDeleted;
     }
 }
