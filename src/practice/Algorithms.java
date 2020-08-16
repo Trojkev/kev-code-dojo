@@ -61,6 +61,11 @@ public class Algorithms {
         // testing questionMarks
         String qText = "arrb6???4xxbl5???eee5";
         System.out.println("Question marks valid: "+ questionMarks(qText));
+
+        // testing threeLargestNumbers
+        int[] inputArray = {2,15,3,11,5,-1,4};
+        System.out.println("Three largest numbers in array: "+Arrays.toString(inputArray)
+                +"\nOutput: "+Arrays.toString(findThreeLargestNumbers(inputArray)));
     }
 
     /**
@@ -403,5 +408,41 @@ public class Algorithms {
         }
 
         return true;
+    }
+
+    private static int[] findThreeLargestNumbers(int[] array) {
+        int[] result = new int[3];
+
+        // find the largest number
+        int firstIndex = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max){
+                max = array[i];
+                firstIndex = i;
+            }
+        }
+        result[2] = max;
+
+        // find the second largest number
+        int secondIndex = 0;
+        max = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max && i != firstIndex){
+                max = array[i];
+                secondIndex = i;
+            }
+        }
+        result[1] = max;
+
+        //find the third largest number
+        max = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max && i != firstIndex && i != secondIndex)
+                max = array[i];
+        }
+        result[0] = max;
+
+        return result;
     }
 }
