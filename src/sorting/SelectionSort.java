@@ -13,7 +13,7 @@ public class SelectionSort {
      * Selection sort algorithm implementation.
      * We identify the smallest item in the input array and record it's index, then we swap the first unsorted
      * element with the element at min index
-     * Time complexity : O(n^2) -> we are looping n times for every item in the array
+     * Time complexity : O(n^2) -> we are traversing n times for every item in the array
      * Space complexity : O(1) -> we are only using two variables and sorting array in space
      * @param array the input array to be sorted
      * @return a sorted version of the input array
