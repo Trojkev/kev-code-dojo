@@ -22,7 +22,8 @@ public class NodeDepths {
         root.left.right.left = new BinaryTree(7);
         root.left.right.right = new BinaryTree(15);
 
-        System.out.println("Node Depths 1: "+ findNodeDepths(root));
+        System.out.println("Node Depths: "+ findNodeDepths(root));
+        System.out.println("Node Depths Recursive: "+ findNodeDepthsRecursive(root));
     }
 
     private static int findNodeDepths(BinaryTree root){
@@ -43,6 +44,17 @@ public class NodeDepths {
         }
 
         return totalDepths;
+    }
+
+    private static int findNodeDepthsRecursive(BinaryTree root) {
+        return findNodeDepthsRecursive(root, 0);
+    }
+
+    private static int findNodeDepthsRecursive(BinaryTree node, int depth) {
+        if (node == null)
+            return 0;
+        return depth + findNodeDepthsRecursive(node.left, depth+1)
+                + findNodeDepthsRecursive(node.right, depth+1);
     }
 
     static class BinaryTree {
