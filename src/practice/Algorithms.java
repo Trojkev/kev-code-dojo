@@ -451,6 +451,8 @@ public class Algorithms {
     }
 
     private static int findMissingElement(int[] array){
+        if (array == null || array.length < 2)
+            return -1;
         int missing = 0;
         // first we sort the array in ascending order to get the missing element
         Arrays.sort(array); // sorts the array in place, hence no space needed
