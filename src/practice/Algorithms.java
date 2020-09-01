@@ -66,6 +66,10 @@ public class Algorithms {
         int[] inputArray = {2,15,3,11,5,-1,4};
         System.out.println("Three largest numbers in array: "+Arrays.toString(inputArray)
                 +"\nOutput: "+Arrays.toString(findThreeLargestNumbers(inputArray)));
+
+        // testing findMissingElement
+        int[] sampleArray = {3,5,4,1};
+        System.out.println("Array: "+Arrays.toString(array) +" Missing: "+ findMissingElement(sampleArray));
     }
 
     /**
@@ -444,5 +448,21 @@ public class Algorithms {
         result[0] = max;
 
         return result;
+    }
+
+    private static int findMissingElement(int[] array){
+        int missing = 0;
+        // first we sort the array in ascending order to get the missing element
+        Arrays.sort(array); // sorts the array in place, hence no space needed
+
+        // next we iterate the sorted array checking if the difference between neighbouring elements is one
+        for (int i = 0; i < array.length-1; i++) {
+            if (array[i+1] - array[i] > 1){
+                missing = array[i] + 1;
+                break;
+            }
+        }
+
+        return missing;
     }
 }
