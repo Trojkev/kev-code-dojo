@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class BstValidator {
     public static void main(String[] args) {
-        var tree = new BstValidator();
+        BstValidator tree = new BstValidator();
 //        tree.root = new BNode(4);
 //        tree.root.left = new BNode(2);
 //        tree.root.left.left = new BNode(1);

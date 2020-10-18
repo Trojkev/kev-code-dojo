@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class NodeDepths {
     public static void main(String[] args) {
-        var root = new BinaryTree(18);
+        BinaryTree root = new BinaryTree(18);
         root.left = new BinaryTree(15);
         root.right = new BinaryTree(21);
         root.left.left = new BinaryTree(8);

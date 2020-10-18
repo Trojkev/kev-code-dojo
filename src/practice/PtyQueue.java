@@ -7,12 +7,12 @@ public class PtyQueue {
     public static void main(String[] args) {
         PriorityQueue<House> pQueue = new PriorityQueue<>(5, new HouseComparator());
         // create new house instances
-        var house1 = new House(15000, 244);
-        var house2 = new House(12500, 172);
-        var house3 = new House(35000, 265);
-        var house4 = new House(78500, 415);
-        var house5 = new House(11000, 112);
-        var house6 = new House(12500, 148);
+        House house1 = new House(15000, 244);
+        House house2 = new House(12500, 172);
+        House house3 = new House(35000, 265);
+        House house4 = new House(78500, 415);
+        House house5 = new House(11000, 112);
+        House house6 = new House(12500, 148);
 
         // add the house instances to the priority queue
         pQueue.add(house1);
@@ -24,7 +24,7 @@ public class PtyQueue {
 
         // now print out the houses in the queue in the order of their priority
         while (!pQueue.isEmpty()) {
-            var h = pQueue.poll();
+            House h = pQueue.poll();
             System.out.println(h.rent + " => " + h.area);
         }
     }

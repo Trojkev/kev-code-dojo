@@ -3,7 +3,6 @@ package practice;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /*
  * This class is a simple demonstration of a
@@ -19,7 +18,7 @@ import java.util.Map;
  * */
 
 class KevBook {
-    private HashMap<String, User> users = new HashMap<>();
+    private final HashMap<String, User> users = new HashMap<>();
 
     void setConnection(User conn1, User conn2) {
         if (contains(conn1) && contains(conn2)) {
@@ -32,14 +31,13 @@ class KevBook {
     }
 
     void printAll() {
-        for (Map.Entry user : users.entrySet()) {
-            User node = (User) user.getValue();
-            System.out.println(node.getName());
-        }
+        users.forEach((key, value) -> {
+            System.out.println(value.getName());
+        });
     }
 
     User addUser(String name) {
-        var user = new User(name);
+        User user = new User(name);
         if (!contains(user))
             users.put(user.getUsername(), user);
         else

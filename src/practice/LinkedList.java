@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedList {
     public static void main(String[] args) {
-        var list = new LinkedList();
+        LinkedList list = new LinkedList();
 
         list.addFirst(5);
         list.addLast(8);
@@ -25,7 +25,7 @@ public class LinkedList {
         if (head == null)
             head = tail = new Node(item);
         else {
-            var first = new Node(item);
+            Node first = new Node(item);
             first.next = head;
             head = first;
         }
@@ -38,7 +38,7 @@ public class LinkedList {
             head = tail = null;
             return;
         }
-        var second = head.next;
+        Node second = head.next;
         head.next = null;
         head = second;
     }
@@ -47,7 +47,7 @@ public class LinkedList {
         if (head == null) // List contains no nodes
             head = tail = new Node(item);
         else { // we create a new node, set tail to point to it, and set it as tail
-            var last = new Node(item);
+            Node last = new Node(item);
             tail.next = last;
             tail = last;
         }
@@ -61,7 +61,7 @@ public class LinkedList {
             return;
         }
 
-        var current = head;
+        Node current = head;
         while (current != null) {
             if (current.next == tail) {// last node (tail)
                 current.next = null;
@@ -107,7 +107,7 @@ public class LinkedList {
 
             builder.append("{");
             String joiner = "";
-            var current = head;
+            Node current = head;
 
             while (current != null){
                 builder.append(joiner);
@@ -122,7 +122,7 @@ public class LinkedList {
     }
 
     private int indexOf(int item) {
-        var current = head;
+        Node current = head;
         int index = 0;
 
         while (current != null) {
@@ -162,7 +162,7 @@ public class LinkedList {
             else
                 addFirst(item);
         } else {
-            var current = head;
+            Node current = head;
 
             while (current != null){
                 if (current == tail) {
@@ -170,7 +170,7 @@ public class LinkedList {
                     return;
                 }
                 else if (current.next.value >= item){
-                    var newNode = new Node(item);
+                    Node newNode = new Node(item);
                     newNode.next = current.next;
                     current.next = newNode;
                     return;
