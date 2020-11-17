@@ -44,9 +44,9 @@ public class MoveElementToEnd {
         int lastIdx = array.size() - 1;
 
         // iterate as long as the two pointers don't overlap
-        while (lastIdx > firstIdx){
+        while (firstIdx < lastIdx){
             // move the last pointer backward until we find a candidate for swapping
-            while (array.get(lastIdx) == element)
+            while (firstIdx < lastIdx && array.get(lastIdx) == element)
                 lastIdx--;
 
             // swap the elements at the pointers if they are valid candidates
