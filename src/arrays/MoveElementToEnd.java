@@ -25,8 +25,7 @@ public class MoveElementToEnd {
         int counter = 0;
         Iterator<Integer> itr = array.iterator();
         while (itr.hasNext()){
-            int val = itr.next();
-            if (val == element){
+            if (itr.next() == element){
                 counter++;
                 itr.remove();
             }
