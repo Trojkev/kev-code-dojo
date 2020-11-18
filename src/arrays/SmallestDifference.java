@@ -14,6 +14,7 @@ public class SmallestDifference {
 
         System.out.printf("Input: %s and %s\n", Arrays.toString(arrayOne), Arrays.toString(arrayTwo));
         System.out.printf("Naive output: %s\n", Arrays.toString(smallestDifferenceNaive(arrayOne, arrayTwo)));
+        System.out.printf("Refined output: %s\n", Arrays.toString(smallestDifferenceRefined(arrayOne, arrayTwo)));
     }
 
     /**
@@ -44,5 +45,33 @@ public class SmallestDifference {
 
         String[] pair = pairs.get(min).split("_");
         return new int[] {Integer.parseInt(pair[0]), Integer.parseInt(pair[1])};
+    }
+
+    /**
+     * The refined approach involves checking all the possible combinations and keeping track of the
+     * least absolute differences as well as the pairs resulting in the least absolute difference
+     *
+     * This solution runs in O(n^m) time complexity and O(1) space complexity where m and n are the
+     * respective sizes of the arrays.
+     * @param arrayOne first input array of integers
+     * @param arrayTwo second input array of integers
+     * @return an array containing two integers with the least absolute difference
+     */
+    private static int[] smallestDifferenceRefined(int[] arrayOne, int[] arrayTwo){
+        int minDifference = Integer.MAX_VALUE;
+        int[] pair = new int[2];
+
+        for (int first: arrayOne) {
+            for (int second: arrayTwo) {
+                int difference = Math.abs(first - second);
+                if (difference < minDifference){
+                    minDifference = difference;
+                    pair[0] = first;
+                    pair[1] = second;
+                }
+            }
+        }
+
+        return pair;
     }
 }
