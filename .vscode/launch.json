@@ -1,0 +1,210 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch UniqueNumbersCount",
+            "request": "launch",
+            "mainClass": "sliding_window.UniqueNumbersCount",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoveElementToEnd",
+            "request": "launch",
+            "mainClass": "arrays.MoveElementToEnd",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch SmallestDifference",
+            "request": "launch",
+            "mainClass": "arrays.SmallestDifference",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch ValidateSubSequence",
+            "request": "launch",
+            "mainClass": "arrays.ValidateSubSequence",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch SlidingWindow",
+            "request": "launch",
+            "mainClass": "dynamic_programming.SlidingWindow",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch WaterArea",
+            "request": "launch",
+            "mainClass": "dynamic_programming.WaterArea",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch Algorithms",
+            "request": "launch",
+            "mainClass": "practice.Algorithms",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinStacking",
+            "request": "launch",
+            "mainClass": "practice.BinStacking",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch BoxStacking",
+            "request": "launch",
+            "mainClass": "practice.BoxStacking",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch BstValidator",
+            "request": "launch",
+            "mainClass": "practice.BstValidator",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch DiskStacking",
+            "request": "launch",
+            "mainClass": "practice.DiskStacking",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedList",
+            "request": "launch",
+            "mainClass": "practice.LinkedList",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch PtyQueue",
+            "request": "launch",
+            "mainClass": "practice.PtyQueue",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringOperations",
+            "request": "launch",
+            "mainClass": "practice.StringOperations",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch WordMachine",
+            "request": "launch",
+            "mainClass": "practice.WordMachine",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch Factorial",
+            "request": "launch",
+            "mainClass": "recursion.Factorial",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch TowerOfHanoi",
+            "request": "launch",
+            "mainClass": "recursion.TowerOfHanoi",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinarySearch",
+            "request": "launch",
+            "mainClass": "searching.BinarySearch",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinearSearch",
+            "request": "launch",
+            "mainClass": "searching.LinearSearch",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch BubbleSort",
+            "request": "launch",
+            "mainClass": "sorting.BubbleSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch InsertionSort",
+            "request": "launch",
+            "mainClass": "sorting.InsertionSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch MergeSort",
+            "request": "launch",
+            "mainClass": "sorting.MergeSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch QuickSort",
+            "request": "launch",
+            "mainClass": "sorting.QuickSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch SelectionSort",
+            "request": "launch",
+            "mainClass": "sorting.SelectionSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch ShellSort",
+            "request": "launch",
+            "mainClass": "sorting.ShellSort",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch FirstNonRepeating",
+            "request": "launch",
+            "mainClass": "strings.FirstNonRepeating",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringPartsReversal",
+            "request": "launch",
+            "mainClass": "strings.StringPartsReversal",
+            "projectName": "kev-code-dojo_b37a35a3"
+        },
+        {
+            "type": "java",
+            "name": "Launch NodeDepths",
+            "request": "launch",
+            "mainClass": "trees.NodeDepths",
+            "projectName": "kev-code-dojo_b37a35a3"
+        }
+    ]
+}
