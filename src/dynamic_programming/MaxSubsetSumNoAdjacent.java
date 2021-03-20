@@ -8,6 +8,7 @@ public class MaxSubsetSumNoAdjacent {
         System.out.println("\nMax efficient sum is: " + maxSumNonAdjacentElementsEfficient(input));
     }
 
+    // O(n) time | O(n) space - where n is number of items in the array
     private static int maxSumNonAdjacentElements(int[] array) {
         if (array.length == 0)
             return 0;
@@ -25,6 +26,7 @@ public class MaxSubsetSumNoAdjacent {
         return maxSums[array.length-1];
     }
 
+    // O(n) time | O(1) space - where n is number of items in the array
     private static int maxSumNonAdjacentElementsEfficient(int[] array) {
         if (array.length == 0)
             return 0;
