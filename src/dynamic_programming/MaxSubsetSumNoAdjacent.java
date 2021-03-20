@@ -4,6 +4,8 @@ public class MaxSubsetSumNoAdjacent {
     public static void main(String[] args) {
         int[] input = new int[] {75, 105, 120, 75, 90, 135};
         System.out.println("Max sum is: " + maxSumNonAdjacentElements(input));
+
+        System.out.println("\nMax efficient sum is: " + maxSumNonAdjacentElementsEfficient(input));
     }
 
     private static int maxSumNonAdjacentElements(int[] array) {
@@ -21,5 +23,23 @@ public class MaxSubsetSumNoAdjacent {
         }
 
         return maxSums[array.length-1];
+    }
+
+    private static int maxSumNonAdjacentElementsEfficient(int[] array) {
+        if (array.length == 0)
+            return 0;
+        else if (array.length == 1)
+            return array[0];
+
+        int first = array[0];
+        int second = Math.max(array[0], array[1]);
+
+        for (int i = 2; i < array.length; i++) {
+            int current = Math.max(second, first + array[i]);
+            first = second;
+            second = current;
+        }
+
+        return second;
     }
 }
