@@ -7,9 +7,10 @@ import java.util.Set;
 public class DijkstraAlgorithm {
     public static void main(String[] args) {
         int[][][] graph = new int[][][] {
-                {},
-                {},
-                {},
+                {{1, 7}},
+                {{2, 6}, {3, 20}, {4, 3}},
+                {{3, 14}},
+                {{4, 2}},
                 {},
                 {}
         };
@@ -44,15 +45,15 @@ public class DijkstraAlgorithm {
                 if (visited.contains(destination))
                     continue;
 
-                if (currentMinDistance + distance < minDistances[vertexIdx]){
-                    minDistances[vertexIdx] = currentMinDistance + distance;
+                if (minDistances[destination] > currentMinDistance + distance){
+                    minDistances[destination] = currentMinDistance + distance;
                 }
             }
+        }
 
-            for (int i = 0; i < minDistances.length; i++) {
-                if (minDistances[i] == Integer.MAX_VALUE)
-                    minDistances[i] = -1;
-            }
+        for (int i = 0; i < minDistances.length; i++) {
+            if (minDistances[i] == Integer.MAX_VALUE)
+                minDistances[i] = -1;
         }
 
         return minDistances;
@@ -66,7 +67,7 @@ public class DijkstraAlgorithm {
             if (visited.contains(i))
                 continue;
 
-            if (minDistances[i] < currentMinDistance) {
+            if (minDistances[i] <= currentMinDistance) {
                 currentMinDistance = minDistances[i];
                 vertexIdx = i;
             }
