@@ -20,6 +20,7 @@ public class MinHeightBST {
         System.out.println("Right: " + root.right.value);
     }
 
+    // O(n) time | O(n) - where n is the size of the input array
     private static BST reconstructMinHeightBST(int[] array) {
         return reconstructMinHeightBST(array, 0, array.length - 1);
     }
