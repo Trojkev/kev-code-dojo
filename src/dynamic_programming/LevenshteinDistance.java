@@ -10,6 +10,7 @@ public class LevenshteinDistance {
         System.out.println("Minimum edit operations: " + getMinimumEditOperations(strOne, strTwo));
     }
 
+    // O(nm) time | O(nm) space - where n is the length of string one and m is the length of string two
     private static int getMinimumEditOperations(String strOne, String strTwo) {
         int cols = strOne.length();
         int rows = strTwo.length();
