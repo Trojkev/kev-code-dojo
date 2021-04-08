@@ -7,6 +7,7 @@ public class ReverseNumber {
         System.out.println("Reverse: " + reverseNumber(num));
     }
 
+    // O(n) time | O(1) space - where n is the size of the number
     private static int reverseNumber(int N) {
         int num=0;
         while (N > 0) {
