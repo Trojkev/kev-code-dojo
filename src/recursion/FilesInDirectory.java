@@ -12,6 +12,7 @@ public class FilesInDirectory {
         File file = new File(path);
 
         String[] fileNames = file.list();
+        if (fileNames == null) return;
 
         for (String fName : fileNames) {
             if(new File(path +"/"+fName).isDirectory()){
