@@ -23,12 +23,12 @@ class TreeNode {
     }
 
     void insert(int value){
-        if (value > data) { // insert in the right sub-tree
+        if (value > data) { // insert in the right subtree
             if (this.right == null)
                 this.right = new TreeNode(value);
             else
                 this.right.insert(value);
-        } else { // insert in the left sub-tree
+        } else { // insert in the left subtree
             if (this.left == null)
                 this.left = new TreeNode(value);
             else

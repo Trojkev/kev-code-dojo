@@ -52,16 +52,12 @@ public class MergeSort {
 
         // copy the remaining elements of left to the main array
         while (i < n1){
-            array[k] = left[i];
-            i++;
-            k++;
+            array[k++] = left[i++];
         }
 
         // copy the remaining elements of right to the main array
         while (j < n2){
-            array[k] = right[j];
-            j++;
-            k++;
+            array[k++] = right[j++];
         }
     }
 }
