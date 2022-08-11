@@ -11,6 +11,10 @@ public class StringOperations {
         input = "Hello world";
         output = reverseString(input);
         System.out.println(input +" : Reversed => "+ output);
+
+        String s1 = "anagrasm";
+        String s2 = "nsagaram";
+        System.out.println("Are "+ s1 +" and "+ s2 +" anagrams? : " + isAnagram(s1, s2));
     }
 
     /**
@@ -64,5 +68,36 @@ public class StringOperations {
         }
 
         return original;
+    }
+
+    /**
+     * This algorithm takes in 2 strings and checks if they are anagrams of each other,
+     * Two strings are anagrams if they contain the exact same letters even if spelt differently
+     * @param s1 the first string being checked
+     * @param s2 the second string being compared
+     * @return a boolean indicating whether the strings are anagrams
+     */
+    private static boolean isAnagram(String s1, String s2){
+        if (s1.length() != s2.length()) return false;
+
+        int[] occurrenceCounter = new int[26];
+
+        // increment the character encounter in the array for each character in the first string
+        for (char c: s1.toCharArray()) {
+            int idx = c - 97;
+            occurrenceCounter[idx] = occurrenceCounter[idx]++;
+        }
+
+        // decrement the character encounter in the array for each character in the second string
+        for (char c: s1.toCharArray()) {
+            int idx = c - 97;
+            occurrenceCounter[idx] = occurrenceCounter[idx]--;
+        }
+
+        for (int c: occurrenceCounter) { // check that all the character counters are equal to zero
+            if (c != 0) return false;
+        }
+
+        return true;
     }
 }
